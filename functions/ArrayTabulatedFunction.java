@@ -55,6 +55,8 @@ public class ArrayTabulatedFunction implements TabulatedFunction {
             return Double.NaN;
         }
 
+        
+
         for (int i = 0; i < pointsCount - 1; i++){
             double x1 = points[i].getX();
             double x2 = points[i + 1].getX();
