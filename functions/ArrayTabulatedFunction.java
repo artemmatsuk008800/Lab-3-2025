@@ -55,7 +55,12 @@ public class ArrayTabulatedFunction implements TabulatedFunction {
             return Double.NaN;
         }
 
-        
+        for (int i = 0; i < pointsCount; i++){
+            if (Math.abs(points[i].getX() - x) < Epsilon) {
+                return points[i].getY(); // Возвращаем соответствующий y
+            }
+        }
+
 
         for (int i = 0; i < pointsCount - 1; i++){
             double x1 = points[i].getX();

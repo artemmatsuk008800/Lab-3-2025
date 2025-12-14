@@ -163,6 +163,17 @@ public class LinkedListTabulatedFunction implements TabulatedFunction {
             return Double.NaN;
 
         FunctionNode current = head.next;
+
+        // Сначала проверяем точное совпадение
+        while (current != head) {
+            if (Math.abs(current.point.getX() - x) < Epsilon) {
+                return current.point.getY(); // Возвращаем сразу y, если x существует
+            }
+            current = current.next;
+        }
+
+        // Если точного совпадения нет, ищем интервал для линейной интерполяции
+        current = head.next;
         while (current != head && current.next != head) {
             double x1 = current.point.getX();
             double x2 = current.next.point.getX();
@@ -174,6 +185,7 @@ public class LinkedListTabulatedFunction implements TabulatedFunction {
             }
             current = current.next;
         }
+
         return Double.NaN;
     }
 
